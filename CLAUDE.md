@@ -20,7 +20,7 @@ A single-page React app that lets users look up any commercial trucking carrier 
 | Loss ratio | Claims paid ÷ Premiums — underwriters target <60% |
 | Chameleon carrier | A carrier that shuts down and reopens under a new USDOT number to escape a bad safety record |
 
-**Primary users:** Insurance underwriters, freight brokers, shippers, logistics professionals.
+**Primary user:** Prototype author (self-learning) — exploring the FMCSA API, data structure, and carrier safety concepts firsthand.
 
 ## Full Spec
 
@@ -38,6 +38,12 @@ See `~/Desktop/Dev/EA/projects/prototypes/fmcsa-explorer/spec.md` for full produ
 - Key endpoints: `/carriers/{dotNumber}`, `/carriers/{dotNumber}/basics`
 - Has CORS restrictions — may need a Vercel serverless function proxy
 - Free API key from ai.fmcsa.dot.gov
+
+## UX Requirements
+
+- **Top-10 carrier sidebar:** Fixed left sidebar listing the 10 largest US carriers (name + USDOT #). Clicking a row auto-fetches and displays that carrier's data. Serves double duty: reference info + instant sample data.
+- **Inline definitions:** Every field label (BASIC categories, OOS rate, fleet size, safety rating, etc.) must show a `ⓘ` tooltip icon. Hovering reveals a plain-English definition. The app is a learning tool — no assumed domain knowledge.
+- **Pre-populated search:** USDOT input defaults to a placeholder from the carrier list so the app is immediately usable without knowing any carrier numbers.
 
 ## Style
 
