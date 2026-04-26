@@ -1,6 +1,12 @@
 import Tooltip from './Tooltip';
 import { DEFINITIONS } from '../data/definitions';
 
+const SAFETY_RATINGS = {
+  S: 'Satisfactory',
+  C: 'Conditional',
+  U: 'Unsatisfactory',
+};
+
 export default function CarrierCard({ carrier }) {
   const c = carrier;
   const statusColor =
@@ -54,7 +60,7 @@ export default function CarrierCard({ carrier }) {
           <dt className="text-gray-500 flex items-center">
             <Tooltip text={DEFINITIONS.safetyRating}>Safety Rating</Tooltip>
           </dt>
-          <dd className="text-gray-100">{c.safetyRating || 'Not rated'}</dd>
+          <dd className="text-gray-100">{SAFETY_RATINGS[c.safetyRating] ?? c.safetyRating ?? 'Not rated'}</dd>
         </div>
         <div>
           <dt className="text-gray-500 flex items-center">

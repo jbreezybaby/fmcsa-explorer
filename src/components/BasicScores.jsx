@@ -37,11 +37,9 @@ export default function BasicScores({ basics }) {
         <h3 className="flex items-center text-xs font-semibold uppercase tracking-widest text-gray-500">
           <Tooltip text={DEFINITIONS.basicScore}>BASIC Categories</Tooltip>
         </h3>
-        {runDate && (
-          <span className="ml-auto text-xs font-normal text-gray-600">
-            data as of {formatDate(runDate)}
-          </span>
-        )}
+        <span className="ml-auto text-xs font-normal text-gray-600 italic">
+          snapshot — not current
+        </span>
       </div>
 
       {!hasBasics ? (
@@ -90,9 +88,10 @@ export default function BasicScores({ basics }) {
           </table>
 
           <p className="mt-3 text-xs text-gray-500 leading-relaxed">
-            <span className="text-gray-400">Note:</span> FMCSA's public API returns BASIC
-            categories with violation counts and measure values, but percentile rankings are
-            marked "Not Public". Percentiles are only available via the{' '}
+            <span className="text-gray-400">Note:</span> The public FMCSA API serves a frozen
+            snapshot of BASIC data — measure values and violation counts here reflect the last
+            public update (2017) and are not current. Percentile rankings are withheld entirely
+            ("Not Public"). For up-to-date scores, use the{' '}
             <a
               href="https://ai.fmcsa.dot.gov/SMS/"
               target="_blank"
@@ -101,8 +100,8 @@ export default function BasicScores({ basics }) {
             >
               FMCSA SMS portal
             </a>{' '}
-            (requires login). Higher measure values and violation counts generally indicate
-            greater safety risk.
+            (free, requires login). The inspection and crash data shown elsewhere on this page
+            is current.
           </p>
         </>
       )}

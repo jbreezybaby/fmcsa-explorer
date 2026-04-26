@@ -26,6 +26,30 @@ A single-page React app that lets users look up any commercial trucking carrier 
 
 See `~/Desktop/Dev/EA/projects/prototypes/fmcsa-explorer/spec.md` for full product spec including MVP scope, design direction, and API details.
 
+## External Research Context
+
+The following files live outside this repo but are directly relevant to feature work on this app. Read them before implementing any feature that touches fleet verification, insurance underwriting, or GenLogs product concepts.
+
+| File | When to read |
+|------|-------------|
+| `/Users/james/Desktop/Dev/EA/projects/job-search/research/genlogs/prd-fleet-verification.md` | Before implementing the Fleet Verification feature — defines the problem, UX spec (free/locked/paid tiers), discrepancy color coding, pricing model, and edge cases |
+| `/Users/james/Desktop/Dev/EA/projects/job-search/research/genlogs/insurance-product-knowledge-base.md` | For broader insurance domain context — loss ratios, underwriting workflow, how FMCSA data is used in practice |
+
+### Fleet Verification — PRD summary
+
+The next major feature planned for this app is **Fleet Verification**: surfacing a GenLogs-observed truck count alongside the FMCSA self-reported fleet size, with a color-coded discrepancy indicator.
+
+Key points from the PRD:
+- **Problem:** Fleet size is self-reported to FMCSA and almost never independently verified. 42% of carriers in GenLogs' analysis operate more trucks than disclosed.
+- **Free tier:** Shows FMCSA-reported fleet size + a blurred/locked GenLogs count with an upgrade prompt
+- **Paid tier:** Shows GenLogs-observed distinct truck count, discrepancy amount, and estimated annual premium leakage
+- **Color coding:** Green (within 5% of reported), Yellow (5–20% above), Red (>20% above), Gray (insufficient sightings)
+- **"Insufficient sightings" state:** When GenLogs hasn't seen enough of a carrier's fleet to make a confident claim — not a fraud signal, just a coverage gap
+- **Pricing:** ~$13/power unit/year across the insurer's active book (~$3M ARR from Progressive alone)
+- **Primary customer:** Commercial trucking insurance underwriters, with Progressive as the anchor account
+
+Full spec, rollout plan, success metrics, and edge cases are in the PRD linked above.
+
 ## Tech Stack
 
 - Vite + React + Tailwind
